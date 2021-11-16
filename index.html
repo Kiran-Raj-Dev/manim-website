@@ -30,19 +30,35 @@ class CircleExample(Scene):
     def construct(self):
         circle = Circle(color=BLUE, fill_opacity=0.5)
         self.add(circle)
-</code></pre><div class="example-child img-div"><img src="/examples/CircleExample.png" class="example-child"/></div></div><div class="main-example hidden" id="example-1"><pre class="example-child"><code class="language-python">from manim import *
+</code></pre><div class="example-child img-div"><img src="/examples/CircleExample.png" class="example-child"/></div></div><div class="main-example hidden" id="example-1"><pre class="example-child"><code class="language-python">class ContinuousMotion(Scene):
+    def construct(self):
+        func = lambda pos: np.sin(pos[0] / 2) * UR + np.cos(pos[1] / 2) * LEFT
+        stream_lines = StreamLines(func, stroke_width=2, max_anchors_per_line=30)
+        self.add(stream_lines)
+        stream_lines.start_animation(warm_up=False, flow_speed=1.5)
+        self.wait(stream_lines.virtual_time / stream_lines.flow_speed)
+</code></pre><div class="example-child img-div"><video controls=""><source src="/examples/ContinuousMotion.webm" type="video/webm"/><source src="/examples/ContinuousMotion.mp4" type="video/mp4"/><p>Your browser doesn&#x27;t support HTML5 video. Here is a<!-- --> <a href="/examples/ContinuousMotion.mp4">link to the video</a> <!-- -->instead.</p></video></div></div><div class="main-example hidden" id="example-2"><pre class="example-child"><code class="language-python">from manim import *
 class SquareExample(Scene):
     def construct(self):
         square = Square(color=YELLOW, fill_opacity=0.5)
         self.add(square)
-</code></pre><div class="example-child img-div"><img src="/examples/SquareExample.png" class="example-child"/></div></div><div class="main-example hidden" id="example-2"><pre class="example-child"><code class="language-python">from manim import *
+</code></pre><div class="example-child img-div"><img src="/examples/SquareExample.png" class="example-child"/></div></div><div class="main-example hidden" id="example-3"><pre class="example-child"><code class="language-python">class EndAnimation(Scene):
+    def construct(self):
+        func = lambda pos: np.sin(pos[0] / 2) * UR + np.cos(pos[1] / 2) * LEFT
+        stream_lines = StreamLines(func, stroke_width=2, max_anchors_per_line=30)
+        self.add(stream_lines)
+        stream_lines.start_animation(warm_up=False, flow_speed=1.5)
+        self.wait(2)
+        self.play(stream_lines.end_animation())
+        self.wait()
+</code></pre><div class="example-child img-div"><video controls=""><source src="/examples/EndAnimation.webm" type="video/webm"/><source src="/examples/EndAnimation.mp4" type="video/mp4"/><p>Your browser doesn&#x27;t support HTML5 video. Here is a<!-- --> <a href="/examples/EndAnimation.mp4">link to the video</a> <!-- -->instead.</p></video></div></div><div class="main-example hidden" id="example-4"><pre class="example-child"><code class="language-python">from manim import *
 class UnionExample(Scene):
     def construct(self):
         sq = Square(color=RED, fill_opacity=1).move_to([-2, 0, 0])
         cr = Circle(color=BLUE, fill_opacity=1).move_to([-1.3, 0.7, 0])
         un = Union(sq, cr, color=GREEN, fill_opacity=1).move_to([1.5, 0.3, 0])
         self.add(sq, cr, un)
-</code></pre><div class="example-child img-div"><img src="/examples/UnionExample.png" class="example-child"/></div></div><div class="main-example hidden" id="example-3"><pre class="example-child"><code class="language-python">class WarpSquare(Scene):
+</code></pre><div class="example-child img-div"><img src="/examples/UnionExample.png" class="example-child"/></div></div><div class="main-example hidden" id="example-5"><pre class="example-child"><code class="language-python">class WarpSquare(Scene):
     def construct(self):
         square = Square()
         self.play(
@@ -52,7 +68,7 @@ class UnionExample(Scene):
             ),
         )
         self.wait()
-</code></pre><div class="example-child img-div"><video controls=""><source src="/examples/WarpSquare.webm" type="video/webm"/><source src="/examples/WarpSquare.mp4" type="video/mp4"/><p>Your browser doesn&#x27;t support HTML5 video. Here is a<!-- --> <a href="/examples/WarpSquare.mp4">link to the video</a> <!-- -->instead.</p></video></div></div><div class="main-example hidden" id="example-4"><pre class="example-child"><code class="language-python">class SquareToCircle(Scene):
+</code></pre><div class="example-child img-div"><video controls=""><source src="/examples/WarpSquare.webm" type="video/webm"/><source src="/examples/WarpSquare.mp4" type="video/mp4"/><p>Your browser doesn&#x27;t support HTML5 video. Here is a<!-- --> <a href="/examples/WarpSquare.mp4">link to the video</a> <!-- -->instead.</p></video></div></div><div class="main-example hidden" id="example-6"><pre class="example-child"><code class="language-python">class SquareToCircle(Scene):
     def construct(self):
         circle = Circle()
         square = Square()
